@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>圣诞快乐！</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #020215;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* 圣诞树样式 */
+        .tree {
+            position: relative;
+            text-align: center;
+        }
+
+        .star {
+            color: gold;
+            font-size: 30px;
+            animation: flash 1s infinite;
+        }
+
+        .layers {
+            font-size: 40px;
+            line-height: 0.8;
+            color: #2e7d32;
+        }
+
+        /* 祝福语 */
+        h1 {
+            margin-top: 20px;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff0000;
+        }
+
+        /* 雪花动画 */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            user-select: none;
+            z-index: 1000;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh);
+            }
+        }
+
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tree">
+        <div class="star">★</div>
+        <div class="layers">
+            ▲<br>
+            ▲▲<br>
+            ▲▲▲<br>
+            ▲▲▲▲<br>
+            <span style="color: #5d4037;">■</span>
+        </div>
+        <h1>🎄 圣诞快乐 🎄</h1>
+        <p>祝你岁岁平安，好运连连！</p>
+    </div>
+
+    <script>
+        // 自动生成雪花的脚本
+        function createSnowflake() {
+            const snow = document.createElement('div');
+            snow.innerHTML = '❄';
+            snow.className = 'snowflake';
+            snow.style.left = Math.random() * 100 + 'vw';
+            snow.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snow.style.opacity = Math.random();
+            snow.style.fontSize = Math.random() * 10 + 10 + 'px';
+            
+            document.body.appendChild(snow);
+
+            setTimeout(() => {
+                snow.remove();
+            }, 5000);
+        }
+
+        setInterval(createSnowflake, 100);
+    </script>
+</body>
+</html>
